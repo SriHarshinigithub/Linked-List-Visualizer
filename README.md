@@ -10,3 +10,5 @@ Smooth Navigation: Navigation buttons allow easy scrolling between sections like
 User-Friendly Design: The interface is built with clean and simple controls to ensure an intuitive experience for users, even without a deep technical background.
 Responsive UI: The visualizer adjusts seamlessly across devices, ensuring usability on both mobile and desktop views.
 Scroll to Top Button: A scroll-to-top button is included for quick navigation within long pages.
+
+#Output
