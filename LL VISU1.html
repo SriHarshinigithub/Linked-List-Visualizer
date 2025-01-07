@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedList Visualizer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 20px 0;
+            text-shadow: 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-buttons {
+            display: flex;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        button.nav-btn {
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            background-color: #ff9100;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button.nav-btn:hover {
+            background-color: #ff5722;
+            transform: scale(1.1);
+        }
+
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        input {
+            padding: 10px 15px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 25px;
+            outline: none;
+            width: 250px;
+        }
+
+        button.add, button.remove, button.reset {
+            padding: 12px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button.add {
+            background-color: #00e676;
+        }
+
+        button.add:hover {
+            background-color: #00c853;
+            transform: scale(1.05);
+        }
+
+        button.remove {
+            background-color: #ff1744;
+        }
+
+        button.remove:hover {
+            background-color: #d50000;
+            transform: scale(1.05);
+        }
+
+        button.reset {
+            background-color: #2979ff;
+        }
+
+        button.reset:hover {
+            background-color: #2962ff;
+            transform: scale(1.05);
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .node {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background-color: #ff9100;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .arrow {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .info, .complexity {
+            margin-top: 50px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        .info h2, .complexity h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .complexity ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .complexity li {
+            margin-bottom: 10px;
+        }
+
+        .section {
+            width: 80%;
+            margin-top: 50px;
+        }
+
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #2979ff;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            transition: opacity 0.3s ease;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #2962ff;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>LinkedList Visualizer</h1>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+        <button class="nav-btn" onclick="scrollToSection('visualization')">Visualization</button>
+        <button class="nav-btn" onclick="scrollToSection('definition')">Definition & Types</button>
+        <button class="nav-btn" onclick="scrollToSection('complexity')">Time & Space Complexity</button>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <input type="text" id="nodeValue" placeholder="Enter node value">
+        <button class="add" onclick="addNode()">Add Node</button>
+        <button class="remove" onclick="removeNode()">Remove Node</button>
+        <button class="reset" onclick="resetList()">Reset List</button>
+    </div>
+
+    <!-- Linked List Container -->
+    <div class="container" id="linkedListContainer">
+        <!-- Nodes will be dynamically added here -->
+    </div>
+
+    <!-- Sections -->
+    <div id="visualization" class="section">
+        <h2>LinkedList Visualization</h2>
+        <p>Nodes and their connections will appear here. Use the controls to add and remove nodes.</p>
+    </div>
+
+    <div id="definition" class="section info">
+        <h2>What is a LinkedList?</h2>
+        <p>A LinkedList is a linear data structure where elements, called nodes, are stored in sequence. Each node contains two parts:</p>
+        <ul>
+            <li><strong>Data:</strong> The value stored in the node.</li>
+            <li><strong>Pointer:</strong> A reference to the next node in the sequence.</li>
+        </ul>
+        <h2>Types of LinkedLists</h2>
+        <ul>
+            <li><strong>Singly LinkedList:</strong> Each node points to the next node, and the last node points to null.</li>
+            <li><strong>Doubly LinkedList:</strong> Each node has two pointers, one to the next node and one to the previous node.</li>
+            <li><strong>Circular LinkedList:</strong> The last node points back to the first node, forming a circle.</li>
+        </ul>
+    </div>
+
+    <div id="complexity" class="section complexity">
+        <h2>Time and Space Complexity</h2>
+        <ul>
+            <li><strong>Time Complexity:</strong>
+                <ul>
+                    <li><strong>Adding a node:</strong> O(1) (constant time)</li>
+                    <li><strong>Removing a node:</strong> O(1) (constant time)</li>
+                    <li><strong>Searching for a node:</strong> O(n) (linear time)</li>
+                </ul>
+            </li>
+            <li><strong>Space Complexity:</strong> O(n) (linear space)</li>
+        </ul>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" onclick="scrollToTop()">↑</button>
+
+    <script>
+        let linkedListContainer = document.getElementById('linkedListContainer');
+
+        function createNode(value) {
+            const node = document.createElement('div');
+            node.className = 'node';
+            node.innerText = value;
+            return node;
+        }
+
+        function createArrow() {
+            const arrow = document.createElement('div');
+            arrow.className = 'arrow';
+            arrow.innerHTML = '&#8594;'; // Right arrow symbol
+            return arrow;
+        }
+
+        function addNode() {
+            const value = document.getElementById('nodeValue').value;
+            if (value === '') {
+                alert('Please enter a value');
+                return;
+            }
+
+            const node = createNode(value);
+
+            if (linkedListContainer.childElementCount > 0) {
+                linkedListContainer.appendChild(createArrow());
+            }
+
+            linkedListContainer.appendChild(node);
+            document.getElementById('nodeValue').value = ''; // Clear input field
+        }
+
+        function removeNode() {
+            if (linkedListContainer.childElementCount === 0) {
+                alert('No nodes to remove');
+                return;
+            }
+
+            if (linkedListContainer.childElementCount > 1) {
+                linkedListContainer.removeChild(linkedListContainer.lastChild); // Remove last node
+                linkedListContainer.removeChild(linkedListContainer.lastChild); // Remove last arrow
+            } else {
+                linkedListContainer.removeChild(linkedListContainer.lastChild); // Remove last node
+            }
+        }
+
+        function resetList() {
+            linkedListContainer.innerHTML = ''; // Clear all nodes and arrows
+        }
+
+        function scrollToSection(id) {
+            const section = document.getElementById(id);
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Scroll to top functionality
+        let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                scrollToTopBtn.classList.add("show");
+            } else {
+                scrollToTopBtn.classList.remove("show");
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
