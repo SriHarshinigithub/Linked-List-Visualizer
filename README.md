@@ -9,12 +9,5 @@ Visual Representation: Each node is displayed in a circular shape, and arrows co
 Smooth Navigation: Navigation buttons allow easy scrolling between sections like "LinkedList Visualization," "Definition & Types," and "Complexity."
 User-Friendly Design: The interface is built with clean and simple controls to ensure an intuitive experience for users, even without a deep technical background.
 Responsive UI: The visualizer adjusts seamlessly across devices, ensuring usability on both mobile and desktop views.
-Scroll to Top Button: A scroll-to-top button is included for quick navigation within long pages.
+Scroll to Top Button: A scroll-to-top button is included for quick navigation within long pages
 
-#Output
-"C:\Users\dell\Pictures\LLSS1.html"
-"C:\Users\dell\Pictures\LLSS2.html"
-"C:\Users\dell\Pictures\LLSS3.html"
-#"C:\Users\dell\Pictures\LLSS1.html"
-#"C:\Users\dell\Pictures\LLSS2.html"
-#"C:\Users\dell\Pictures\LLSS3.html"
