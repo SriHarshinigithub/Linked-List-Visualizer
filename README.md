@@ -12,3 +12,9 @@ Responsive UI: The visualizer adjusts seamlessly across devices, ensuring usabil
 Scroll to Top Button: A scroll-to-top button is included for quick navigation within long pages.
 
 #Output
+"C:\Users\dell\Pictures\LLSS1.html"
+"C:\Users\dell\Pictures\LLSS2.html"
+"C:\Users\dell\Pictures\LLSS3.html"
+#"C:\Users\dell\Pictures\LLSS1.html"
+#"C:\Users\dell\Pictures\LLSS2.html"
+#"C:\Users\dell\Pictures\LLSS3.html"
