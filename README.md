@@ -1,4 +1,4 @@
-LINKED LIST ANALYZER:
+LINKED LIST VISUALIZER:
 LinkedList Visualizer
 
 This project is an interactive web-based tool designed to visualize LinkedLists and their operations in a user-friendly manner. It allows users to dynamically manipulate a LinkedList by adding, removing, and resetting nodes, providing a clear visual representation of the list’s structure. The tool uses HTML, CSS, and JavaScript to offer a smooth, responsive experience.
