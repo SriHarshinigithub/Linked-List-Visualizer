@@ -33,9 +33,4 @@ This project is an interactive, web-based tool designed to visually demonstrate 
 
 ---
 
-## 🧭 **How to Run the Project Locally**
 
-1. **Clone the repository:**  
-   ```bash
-   git clone https://github.com/yourusername/linkedlist-visualizer.git
-   cd linkedlist-visualizer
